@@ -1,6 +1,7 @@
 # main
 debian sever setup scripts or configurations, docker files, etc.
 
+no personal information should be here.
 
 # some tips
 
