@@ -1,5 +1,6 @@
 # main
-sever setup scripts or configurations... for my personal use
+debian sever setup scripts or configurations, docker files, etc.
+
 
 # some tips
 
