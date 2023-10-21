@@ -9,10 +9,10 @@ https://www.tldraw.com/r/LlQjZ2Xmdm1kXR_WrwYoY?viewport=85%2C-14058%2C1410%2C724
 # some tips
 
 ssh tunnel:
-`ssh -N -L 8888:localhost:8888 user@ip`
+`ssh user@ip -N -L 8888:localhost:8888 -L 4000:localhost:4000 ...`
 
 '-N': dont's use command line.
-
+'...': you can add as many -L port settting as you want.
 
 sftp:
 `sftp -oPort=port user@ip`
