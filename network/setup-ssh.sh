@@ -5,7 +5,8 @@
 config_file="/etc/ssh/sshd_config"
 
 # shutdown root login
-sed -i '/^PermitRootLogin[ \t]\+\w\+$/{ s//PermitRootLogin no/g; }' $config_file
+# ref: https://github.com/pssss/Security-Baseline/blob/master/centos7.sh
+grep -E -q "^\s*PermitRootLogin\s+.+$" $config_file && sed -ri "s/^\s*PermitRootLogin\s+.+$/PermitRootLogin no/" $config_file || echo "PermitRootLogin no" >> $config_file
 # limit max auth tries
 sed -i '/^#MaxAuthTries[ \t]\+\w\+$/{ s//MaxAuthTries 6/g; }' $config_file
 

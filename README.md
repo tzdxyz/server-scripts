@@ -12,7 +12,9 @@ ssh tunnel:
 `ssh user@ip -N -L 8888:localhost:8888 -L 4000:localhost:4000 ...`
 
 '-N': dont's use command line.
+
 '...': you can add as many -L port settting as you want.
+
 
 sftp:
 `sftp -oPort=port user@ip`
