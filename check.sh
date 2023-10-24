@@ -8,6 +8,7 @@ last | head -n 5
 # check network
 echo -e "\ntcp connection: "
 ss -tp
+echo
 ss -tpln
 
 # check firewalld

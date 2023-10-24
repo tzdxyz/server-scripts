@@ -11,7 +11,11 @@ sudo apt-get install ca-certificates curl gnupg -y
 sudo apt-get install net-tools -y
 sudo apt-get install zip -y
 
-#sudo apt-get install nodejs (version is low)
+# install nodejs
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
+source ~/.bashrc
+nvm install 18.18.2
+
 #sudo apt install python3 python3-dev python3-venv python3-pip -y
 #pip install --upgrade pip
 

@@ -10,7 +10,10 @@ sudo certbot certificates
 # for nginx
 sudo apt-get install python3-certbot-nginx -y
 sudo certbot --nginx --register-unsafely-without-email 
+sudo nginx -s reload
 
 # check scheduled renew process
 echo -e "\ncertbot scheduled renew timer"
 systemctl list-timers | grep certbot
+
+#
