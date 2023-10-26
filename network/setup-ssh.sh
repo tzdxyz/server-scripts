@@ -3,12 +3,15 @@
 # ref: https://stackoverflow.com/questions/36389561/bash-script-to-disable-root-login
 
 config_file="/etc/ssh/sshd_config"
+ssh_port=222
 
 # shutdown root login
 # ref: https://github.com/pssss/Security-Baseline/blob/master/centos7.sh
 grep -E -q "^\s*PermitRootLogin\s+.+$" $config_file && sed -ri "s/^\s*PermitRootLogin\s+.+$/PermitRootLogin no/" $config_file || echo "PermitRootLogin no" >> $config_file
 # limit max auth tries
 sed -i '/^#MaxAuthTries[ \t]\+\w\+$/{ s//MaxAuthTries 6/g; }' $config_file
+# change port
+grep -E -q "^#?\s*Port\s+.+$" $config_file && sed -ri "s/^#?\s*Port\s+.+$/Port ${ssh_port}/" $config_file || echo "Port ${ssh_port}" >> $config_file
 
 
 # Check if the ClientAliveInterval setting already exists
