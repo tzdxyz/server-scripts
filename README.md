@@ -1,6 +1,7 @@
 # main
-debian sever setup scripts or configurations, docker files, etc.
+public debian sever scripts, for setup, configuration, docker files, etc, for my personal use 
 
+CAUTION: 
 no personal information should be here.
 
 shared whiteboard:
