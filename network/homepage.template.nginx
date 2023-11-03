@@ -1,0 +1,41 @@
+# this file is the nginx configuration for my homepage with ssl
+# usage:
+# link this file to /etc/nginx/site-enabled/
+# sudo ln -sf .../homepage.nginx /etc/nginx/sites-enabled/homepage.nginx
+# then sudo nginx -s reload
+server {
+
+	root /home/tom...;
+	index index.html;
+    server_name example.top www.example.top; # managed by Certbot
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+
+	listen [::]:443 ssl ipv6only=on; # managed by Certbot
+    	listen 443 ssl; # managed by Certbot
+    
+	ssl_certificate /etc/letsencrypt/live/hhghome.top/fullchain.pem; # managed by Certbot
+    	ssl_certificate_key /etc/letsencrypt/live/hhghome.top/privkey.pem; # managed by Certbot
+    	include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    	ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+    	add_header Strict-Transport-Security "max-age=31536000" always; 
+}
+
+server {
+    if ($host = www.hhghome.top) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+    if ($host = hhghome.top) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+	listen 80 ;
+	listen [::]:80 ;
+    server_name example.top www.example.top;
+    return 404; # managed by Certbot
+}
+
